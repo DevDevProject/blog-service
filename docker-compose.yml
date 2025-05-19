@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: blog-service
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - .:/app
+
+volumes:
+  db_data:
