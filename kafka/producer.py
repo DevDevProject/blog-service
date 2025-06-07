@@ -1,9 +1,13 @@
 import json
 from aiokafka import AIOKafkaProducer
-import asyncio
 
-KAFKA_BOOTSTRAP_SERVERS = "localhost:9092"
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 KAFKA_TOPIC = "company.blog_count.increase"
+KAFKA_BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS")
 
 producer = None
 
