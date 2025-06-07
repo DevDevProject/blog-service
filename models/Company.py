@@ -9,4 +9,4 @@ class Company(Base):
     name = Column(String(255))
     image = Column(String(255))
     
-    blogs = relationship("TechBlog", back_populates="company")
+    blogs = relationship("Blog", back_populates="company")

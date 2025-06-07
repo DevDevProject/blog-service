@@ -1,11 +1,11 @@
-from sqlalchemy import Column, BigInteger, String, DateTime, ForeignKey
+from sqlalchemy import Column, BigInteger, String, DateTime, ForeignKey, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from models.Base import Base
 
 
-class TechBlog(Base):
-    __tablename__ = "tech_blog"
+class Blog(Base):
+    __tablename__ = "blog"
 
     id = Column(BigInteger, primary_key=True, index=True)
     title = Column(String(255))
@@ -13,6 +13,7 @@ class TechBlog(Base):
     description = Column(String(1000))
     thumbnail = Column(String(255))
     create_date = Column(DateTime, default=datetime.utcnow)
+    summary = Column(Text)
     
     company_id = Column(BigInteger, ForeignKey("company.id"))
     category_id = Column(BigInteger, ForeignKey("category.id"))

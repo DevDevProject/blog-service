@@ -25,7 +25,7 @@ class BlogOut(BaseModel):
     thumbnail: str
     create_date: datetime
     company: CompanyOut
-    category: str
+    category: Optional[str] = None
 
     class Config:
         from_attributes = True
