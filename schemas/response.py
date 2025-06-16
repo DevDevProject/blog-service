@@ -32,4 +32,4 @@ class BlogOut(BaseModel):
         
 class BlogResponse(BaseModel):
     blogs: List[BlogOut]
-    total: int
+    total_count: int
