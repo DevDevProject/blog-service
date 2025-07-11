@@ -2,7 +2,7 @@ import os
 from typing import List
 from dotenv import load_dotenv
 from fastapi import APIRouter, Depends
-from mysqlx import Session
+from sqlalchemy.orm import Session
 import redis
 
 from db.database import get_db
@@ -51,3 +51,7 @@ def popular_companies(db: Session = Depends(get_db)):
         }
         for b in blogs
     ]
+
+@router.post("/popular")
+def increase_popular_count(id: int):
+    increase_blog_score(id)
