@@ -11,8 +11,14 @@ load_dotenv()
 
 REDIS_URL = os.getenv("REDIS_SERVER")
 REDIS_PORT = os.getenv("REDIS_PORT")
+REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
 
-redis_client = redis.Redis(host=REDIS_URL, port=REDIS_PORT, decode_responses=True)
+redis_client = redis.Redis(
+    host=REDIS_URL,
+    port=REDIS_PORT,
+    password=REDIS_PASSWORD,
+    decode_responses=True
+)
 
 def increase_blog_score(blog_id: int):
     redis_client.zincrby("popular:blog", 1, str(blog_id))
